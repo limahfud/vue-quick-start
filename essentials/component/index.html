@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="color in colors" >
+
+                <counter v-bind:color="color.text"></counter>
+
+            </li>
+            
+        </ul>
+
+
+    </div>
+
+    <script>
+        const counter = Vue.component('counter', {
+            data() {
+                return {
+                    count : 0
+                }
+            },
+            props : ['color'],
+            methods : {
+                increment() {
+                    this.count++
+                }
+            },
+            template : `
+                <div>
+                    <div>Count : {{ this.count }} </div>
+                    <button class="button" @click="increment()">Add Me Up to {{ color }} </button>    
+                </div>
+            `
+        })
+
+        const app = new Vue({
+            el : '#app',
+            data : {
+                colors : [
+                    {
+                        text: 'red',
+                        primary: true
+                    }, 
+                    {
+                        text: 'green',
+                        primary: false
+                    }, 
+                    {
+                        text: 'yellow',
+                        primary: true
+                    }, 
+                    {
+                        text: 'blue',
+                        primary: false
+                    },
+                    {
+                        text: 'black',
+                        primary: true
+                    }
+                ]
+            },
+            components : { counter },
+            methods : {
+                popup(color) {
+                    confirm('Ahhahahaha ' + color.text )
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue App</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:title="number">
+            Hover over me
+        </p>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el : '#app',
+            data : {
+                number : (Math.random() * 100) + 1
+            }
+        })
+    </script>
+</body>
+</html>

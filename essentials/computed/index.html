@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="email">
+
+        <span>Your Text Lowercase : {{ email.toLowerCase() }}</span>
+    </div>
+    <script>
+       
+
+        const app = new Vue({
+            el : '#app',
+            data : {
+                email : ''
+            },
+            methods : {
+               
+            }
+        })
+    </script>
+</body>
+</html>

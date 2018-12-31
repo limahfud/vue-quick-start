@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="color in colors" class="button" v-on:click="popup(color)"> {{ color.text }}</li>
+        </ul>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el : '#app',
+            data : {
+                colors : [
+                    {
+                        text: 'red',
+                        primary: true
+                    }, 
+                    {
+                        text: 'green',
+                        primary: false
+                    }, 
+                    {
+                        text: 'yellow',
+                        primary: true
+                    }, 
+                    {
+                        text: 'blue',
+                        primary: false
+                    },
+                    {
+                        text: 'black',
+                        primary: true
+                    }
+                ]
+            },
+            methods : {
+                popup(color) {
+                    confirm('Ahhahahaha ' + color.text )
+                }
+            }
+        })
+    </script>
+</body>
+</html>

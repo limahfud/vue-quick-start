@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notemaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div class="columns">
+        <div class="column is-full" style="padding: 30px">
+            <div id="app">
+                <h1>{{ title }}</h1>
+                <br><br>
+                <div class="columns">
+        
+                    <div class="column is-half">
+                        <div class="columns">
+                            <label class="column is-4"> 
+                                Title
+                            </label>
+                            <input type="text" class="input is-8" v-model="note.title">
+                        </div>
+                        <div class="columns">
+                            <label class="column is-4"> 
+                                Text
+                            </label>
+                            <div class="column" style="padding: 0;">
+                                <textarea rows="10" class="textarea is-full" v-model="note.text"></textarea>
+                            </div>
+                        </div>
+                        <div class="column is-8 is-offset-4">
+                            <button class="button is-primary" @click="save()">Save</button>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <article class="message" v-for="note in notes">
+                            <div class="message-header">
+                                <p>{{ note.title }}</p>
+                                <button class="delete" aria-label="delete"></button>
+                            </div>
+                            <div class="message-body">
+                                {{ note.text }}
+                            </div>
+                        </article>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el : '#app',
+            data : {
+                title : 'Notemaster',
+                note : {
+                    title : '',
+                    text: ''
+                },
+                notes : []
+            },
+            methods: {
+                save() {
+                    // const note = {
+                    //     title : this.note.title,
+                    //     text : this.note.text
+                    // }
+                    this.notes.push({...this.note})
+
+                    this.note.title = ''
+                    this.note.text = ''
+                }
+
+            }
+        })
+    
+    </script>
+</body>
+</html>
